@@ -14,7 +14,7 @@ async function login(req,res){
         return res.status(400).send({status:"Error", message:"No has ingresado todos los campos"})
     }
 
-    const usuarioArevisar = usuarios.find(usuario => usuarios.user === user)
+    const usuarioArevisar = usuarios.find(usuario => usuario.user === user)
     if(!usuarioArevisar){
         return res.status(400).send({status:"Error",message:"Error en alguno de los campos"})
     }
@@ -36,7 +36,6 @@ async function login(req,res){
 }
 
 async function register(req,res){
-    console.log(req.body)
     const user = req.body.user
     const email =req.body.email
     const password = req.body.password
@@ -44,7 +43,7 @@ async function register(req,res){
         return res.status(400).send({status:"Error", message:"Los campos están incompletos"})
     }
 
-    const usuarioArevisar = usuarios.find(usuario => usuarios.user === user)
+    const usuarioArevisar = usuarios.find(usuario => usuario.user === user)
     if(usuarioArevisar){
         return res.status(400).send({status:"Error", message:"Usuario ya está creado"})
     }
@@ -56,8 +55,6 @@ async function register(req,res){
         email,
         password: hashPassword
     }
-
-    console.log(nuevoUsuario)
     usuarios.push(nuevoUsuario)
     return res.status(201).send({status:"ok", message: `usuario ${nuevoUsuario.user} agregado`, redirect:"/"})
 }

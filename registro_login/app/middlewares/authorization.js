@@ -18,8 +18,8 @@ function soloPublico(req, res, next){
 function revisarCookie(req){
     try{
         const cookieJWT = req.headers.cookie.split("; ").find(cookie=> cookie.startsWith("jwt=")).slice(4)
-    const decodificada = jsonwebtoken.verify(cookieJWT,process.env.JWT_SECRET)
-    const usuarioArevisar = usuarios.find(usuario => usuario.user === decodificada.user)
+        const decodificada = jsonwebtoken.verify(cookieJWT,process.env.JWT_SECRET)
+        const usuarioArevisar = usuarios.find(usuario => usuario.user === decodificada.user)
 
     if(!usuarioArevisar){
         return false
