@@ -1,6 +1,6 @@
 import jsonwebtoken from 'jsonwebtoken'
 import dotenv from'dotenv'
-import {usuarios} from '../controllers/autheticationController'
+import {usuarios} from './../controllers/autheticationController.js'
 dotenv.config()
 
 function soloAdmin(req,res,next){
