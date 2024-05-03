@@ -1,5 +1,5 @@
-import express from 'express'
-import routes from './views/endPoints.js'
+const express = require('express') 
+const routes = require('./views/endPoints')
 
 const app = express()
 const port = 3000
